@@ -1,0 +1,37 @@
+[include]
+    path = .gitconfig_local
+
+[diff]
+    tool = araxis
+[difftool "araxis"]
+    path = C:\\Program Files\\Araxis\\Araxis Merge\\compare.exe
+
+[merge]
+    tool = araxis
+[mergetool "araxis"]
+    path = C:\\Program Files\\Araxis\\Araxis Merge\\compare.exe
+
+[core]
+    editor = gvim
+
+[alias]
+    dt  = difftool
+    cv  = commit --verbose
+    st  = status
+    ci  = commit
+    br  = branch
+    co  = checkout
+    df  = diff
+    pom = push origin master
+    lg  = log -p
+    who = shortlog -s --    
+    sup = submodule foreach git pull origin master
+    aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+    alias = !sh -c '[ $# = 2 ] && git config --global alias.\"$1\" \"$2\" && exit 0 || echo \"usage: git alias <new alias> <original command>\" >&2 && exit 1' -
+    
+[difftool]
+    prompt = false
+
+[mergetool]
+	prompt = false
+
