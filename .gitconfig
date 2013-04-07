@@ -14,6 +14,28 @@
 [core]
     editor = gvim
 
+[color]
+    branch = auto
+    diff = always
+    status = auto
+    ui = true
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = cyan bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = red
+
 [alias]
     dt  = difftool
     cv  = commit --verbose
@@ -25,9 +47,12 @@
     pom = push origin master
     lg  = log -p
     who = shortlog -s --    
+    mb  = !git checkout -b newbranch && git checkout master && git merge newbranch && git branch -d newbranch
     sup = submodule foreach git pull origin master
-    aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
     alias = !sh -c '[ $# = 2 ] && git config --global alias.\"$1\" \"$2\" && exit 0 || echo \"usage: git alias <new alias> <original command>\" >&2 && exit 1' -
+    summary = log --graph --decorate --pretty=oneline --abbrev-commit
+    history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --color --all
+    aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
     
 [difftool]
     prompt = false
