@@ -46,6 +46,8 @@
     df  = diff
     pom = push origin master
     lg  = log -p
+    ls  = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    ll  = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     who = shortlog -s --    
     mb  = !git checkout -b newbranch && git checkout master && git merge newbranch && git branch -d newbranch
     sup = submodule foreach git pull origin master
